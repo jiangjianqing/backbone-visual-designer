@@ -32,7 +32,8 @@ require.config({
 		backbone: '../bower_components/backbone/backbone',
 		text: '../bower_components/requirejs-text/text',
 		domReady:'../bower_components/requirejs-domready/domReady',
-		handlebars:'../bower_components/handlebars/handlebars'
+		handlebars:'../bower_components/handlebars/handlebars',
+		highcharts:'../bower_components/highcharts/highcharts'
 	}
 });
 
@@ -40,12 +41,12 @@ require([
 	'backbone',
 	'jquery',
 	//'views/group/groups',
-	//'routers/router',
+	'routers/router',
 	'domReady'
-], function (backbone,$/*GroupView,AppRouter*/) {
+], function (backbone,$,AppRouter/*GroupView,*/) {
 
 	//一个应用中只有一个router，所有的路由都有其管理，这里将其管理的el范围传递进去
-	//var router = new AppRouter('#appView');//20150909,Router功能在Activiti-Explorer中使用
+	var router = new AppRouter('#appView');//20150909,Router功能在Activiti-Explorer中使用
 	//普通Backbone测试无需使用AppRouter
 
 	//20150906,使用Html5的pushState特性，服务器端也必须设定Rewrite attributes，尚未测试

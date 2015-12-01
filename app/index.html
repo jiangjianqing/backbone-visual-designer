@@ -31,52 +31,60 @@
             display: none;
         }
     </style>
+
+    <script type="text/javascript">
+        //var ctx = '<%=request.getContextPath() %>';
+
+        String.format = function() {
+            if (arguments.length == 0)
+                return null;
+            var str = arguments[0];
+            for ( var i = 1; i < arguments.length; i++) {
+                var re = new RegExp('\\{' + (i - 1) + '\\}', 'gm');
+                str = str.replace(re, arguments[i]);
+            }
+            return str;
+        };
+        // var a = "我喜欢吃{0}，也喜欢吃{1}，但是最喜欢的还是{0},偶尔再买点{2}";
+        // alert(String.format(a, "苹果","香蕉","香梨"));
+        // 结果:我喜欢吃苹果，也喜欢吃香蕉，但是最喜欢的还是苹果,偶尔再买点香梨
+
+        String.prototype.format = function(args) {
+            var result = this;
+            if (arguments.length > 0) {
+                if (arguments.length == 1 && typeof (args) == "object") {
+                    for (var key in args) {
+                        if(args[key]!=undefined){
+                            var reg = new RegExp("({" + key + "})", "g");
+                            result = result.replace(reg, args[key]);
+                        }
+                    }
+                }
+                else {
+                    for (var i = 0; i < arguments.length; i++) {
+                        if (arguments[i] != undefined) {
+                            //var reg = new RegExp("({[" + i + "]})", "g");//这个在索引大于9时会有问题，谢谢何以笙箫的指出
+                            var reg= new RegExp("({)" + i + "(})", "g");
+                            result = result.replace(reg, arguments[i]);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+        //两种调用方式
+        //var template1="我是{0}，今年{1}了";
+        //var template2="我是{name}，今年{age}了";
+        //var result1=template1.format("loogn",22);
+        //var result2=template2.format({name:"loogn",age:22});
+        //两个结果都是"我是loogn，今年22了"
+    </script>
+
 </head>
-<body ng-cloak>
-    
-    <div ng-include="'views/partials/nav.html'"></div>
 
-    <div class="container-fluid">
-        <div ng-view></div>
+<body id="appView">
 
-        <div>Angular seed app: v<span app-version></span></div>
-        <!--
-        <div ng-include="'views/menu1.html'"></div>
-        -->
-    </div>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <ul class="nav nav-sidebar">
-                    <!-- 这里展示了两种指定 ui-sref 状态的方式，效果相同，区别只是鼠标放在a元素上是否显示目标地址 -->
-                    <li ui-sref-active-eq="active"><a ui-sref="start">Overview <span class="sr-only">(current)</span></a></li>
-                    <li ui-sref-active="active" ui-sref="report"><a href="">报表</a></li>
-                    <li ui-sref-active="active"><a  ui-sref="inputbox.detail">收件箱</a></li>
-                    <li><a href="#">Export</a></li>
-                </ul>
-                <ul class="nav nav-sidebar">
-                    <li><a href="">Nav item</a></li>
-                    <li><a href="">Nav item again</a></li>
-                    <li><a href="">One more nav</a></li>
-                    <li><a href="">Another nav item</a></li>
-                    <li><a href="">More navigation</a></li>
-                </ul>
-                <ul class="nav nav-sidebar">
-                    <li><a href="">Nav item again</a></li>
-                    <li><a href="">One more nav</a></li>
-                    <li><a href="">Another nav item</a></li>
-                </ul>
-            </div>
-
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <!-- 主要区域的内容 -->
-                <div ui-view></div>
-            </div>
-
-
-        </div>
-    </div>
+</body>
 
     <!--(if target dist)>
         <script src="lib/jquery/jquery.js"></script>
@@ -90,6 +98,5 @@
 
         <script data-main="main" src="../bower_components/requirejs/require.js"></script>
     <!--<!(endif)-->
-    
-</body>
+
 </html>
