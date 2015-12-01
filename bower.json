@@ -10,7 +10,8 @@
     "requirejs": "2.1.x",
     "bootstrap": "~3.3.5",
     "backbone": "~1.2.3",
-    "handlebars": "~4.0.5"
+    "handlebars": "~4.0.5",
+    "requirejs-domready": "~2.0.1"
   },
   "devDependencies": {},
   "appPath": "app",
