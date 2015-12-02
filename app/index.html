@@ -13,9 +13,14 @@
     
     <!--(if target dist)>
         <link rel="stylesheet" href="styles/bootstrap.min.css" />
+
+        <script src="lib/jquery/jquery.js"></script>
+        <script src="lib/bootstrap/bootstrap.js"></script>
     <!(endif)-->
     <!--(if target dummy)><!-->
         <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!--<!(endif)-->
     <title> AngularJS+Bootstrap3范例</title>
     <!--
@@ -87,14 +92,10 @@
 </body>
 
     <!--(if target dist)>
-        <script src="lib/jquery/jquery.js"></script>
-        <script src="lib/bootstrap/bootstrap.js"></script>
 
         <script data-main="main" src="lib/requirejs/require.js"></script>
     <!(endif)-->
     <!--(if target dummy)><!-->
-        <script src="../bower_components/jquery/dist/jquery.js"></script>
-        <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
 
         <script data-main="main" src="../bower_components/requirejs/require.js"></script>
     <!--<!(endif)-->
