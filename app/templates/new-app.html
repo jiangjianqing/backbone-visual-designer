@@ -28,8 +28,48 @@
         <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="#overview">Overview <span class="sr-only">(current)</span></a></li>
-                <li><a href="#report">Reports</a></li>
-                <li><a href="#group">Groups</a></li>
+                <li><a data-toggle="collapse" href="#collapseOne" data-parent="#sidebar">快速开发</a>
+                    <div id="collapseOne" class=" collapse in">
+                        <ul class="list-group">
+                            <li class="list-group-item">元素栏</li>
+                            <li class="list-group-item">算法栏</li>
+                            <li class="list-group-item">子流程栏</li>
+                            <li class="list-group-item">
+                                <div class="pull-right popover-info"><span class="badge">新</span>
+                                    <div class="popover fade right">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title">功能介绍</h3>
+                                        <div class="popover-content">显示系统当前状态用，请访问<a target="_blank" href="http://twitter.github.io/bootstrap/scaffolding.html#gridSystem">状态栏.</a></div>
+                                    </div>
+                                </div>
+                                状态栏
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">新</span>
+                                工具栏
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+                <li><a data-toggle="collapse" href="#collapseTwo" data-parent="#sidebar">系统主界面</a>
+                    <div id="collapseTwo" class=" collapse in">
+                        <ul class="list-group">
+                            <li class="list-group-item"><i class="glyphicon glyphicon-user"></i>顶部工具栏</li>
+                            <li class="list-group-item">导航栏</li>
+                            <li class="list-group-item">底部信息栏</li>
+                            <li class="list-group-item">
+                                <span class="badge">新</span>
+                                实时状态
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">新</span>
+                                属性配置
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
                 <li><a href="#process">Processes</a></li>
             </ul>
             <ul class="nav nav-sidebar">
@@ -85,11 +125,51 @@
         </div>
 
         <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <button type="button" class="btn btn-warning" title="Popover title"
-                    data-container="body" data-toggle="popover" data-placement="right"
-                    data-content="右侧的 Popover 中的一些内容">
-                右侧的 Popover
-            </button>
+            <div class="panel-group" id="accordion">
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseThree">
+                                点击我进行展开，再次点击我进行折叠。第 3 部分--toggle 方法
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+                            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+                            lomo.
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseFour">
+                                点击我进行展开，再次点击我进行折叠。第 4 部分--options 方法
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+                            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice
+                            lomo.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                $(function () { $('#collapseFour').collapse({
+                    toggle: false
+                })});
+                $(function () { $('#collapseTwo').collapse('show')});
+                $(function () { $('#collapseThree').collapse('toggle')});
+                $(function () { $('#collapseOne').collapse('hide')});
+            </script>
         </div>
 
     </div>
