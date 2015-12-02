@@ -97,7 +97,13 @@ module.exports=function(grunt){
 	        cwd: '<%= yeoman.app %>/views',
 	        dest: '<%= yeoman.dist %>/views/',
 	        src: '{,*/}*.*'
-	      }
+	      },
+		  routers:{
+			expand:true,
+	        cwd: '<%= yeoman.app %>/routers',
+	        dest: '<%= yeoman.dist %>/routers/',
+	        src: '{,*/}*.*'
+		  }
 	    },	    
 	    targethtml: {
 		    dist: {
