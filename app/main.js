@@ -41,7 +41,8 @@ require([
 	'backbone',
 	'jquery',
 	//'views/group/groups',
-	'routers/router',
+	//'routers/router',
+    'routers/app-router',
 	'domReady'
 ], function (backbone,$,AppRouter/*GroupView,*/) {
 
