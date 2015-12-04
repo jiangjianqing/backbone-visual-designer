@@ -2,9 +2,17 @@
  * Base structure
  */
 
+/* 20151204 这里将 html body container的height全都设定为与浏览器同样高度*/
+html{ height:100%}
+
+.container-fluid{
+    height:100%
+}
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  height:100%;/* 让body高度全屏*/
 }
 
 

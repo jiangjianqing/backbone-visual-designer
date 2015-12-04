@@ -24,7 +24,7 @@
 </nav>
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="layout_container_row row">
         <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="#overview">Overview <span class="sr-only">(current)</span></a></li>
@@ -126,8 +126,8 @@
 
         </div>
 
-        <div id="main" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
+        <div id="main" class="layout_container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<!--
             <div class="panel panel-default">
                 <div class="panel-heading">面板标题
                 <i class="pull-right glyphicon glyphicon-remove"></i></div>
@@ -137,15 +137,15 @@
                     <tr><td>产品 B</td><td>400</td></tr>
                 </table>
             </div>
+-->
+            <fieldset class="column left">
+                <div>left fieldset</div>
+            </fieldset>
+            <div id="handler_vertical" class="handler" ></div>
+            <fieldset class="column     right">
+                <div>right fieldset</div>
+            </fieldset>
 
-            <script type="text/javascript">
-                $(function () { $('#collapseFour').collapse({
-                    toggle: false
-                })});
-                $(function () { $('#collapseTwo').collapse('show')});
-                $(function () { $('#collapseThree').collapse('toggle')});
-                $(function () { $('#collapseOne').collapse('hide')});
-            </script>
         </div>
 
     </div>
@@ -158,7 +158,7 @@
         padding:30px 15px 15px;
         border: 1px solid #DDDDDD;
         border-radius: 4px;
-        min-height: 200px;
+        height: auto;
         word-wrap: break-word;}
     .main:after {
         background-color: #F5F5F5;
@@ -175,3 +175,14 @@
     }
 
 </style>
+
+<link rel="stylesheet" href="styles/container.css" />
+
+<script type="text/javascript">
+    $(function () { $('#collapseFour').collapse({
+        toggle: false
+    })});
+    $(function () { $('#collapseTwo').collapse('show')});
+    $(function () { $('#collapseThree').collapse('toggle')});
+    $(function () { $('#collapseOne').collapse('hide')});
+</script>

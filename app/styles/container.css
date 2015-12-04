@@ -1,0 +1,36 @@
+.layout_container
+{
+    height:100%;
+    position: relative;
+}
+
+.layout_container fieldset.column{
+    height:100%;
+    display: block;
+}
+
+
+.layout_container fieldset.left{
+    position: absolute;
+    border: 1px solid #ffc520;
+}
+
+.layout_container fieldset.right{
+    position: absolute;
+    border: 1px solid #ff5fba;
+}
+
+.layout_container_row{
+    height: 100%;
+}
+
+#handler_vertical{
+    z-index: 200;
+    width: 8px;
+    height: 100%;
+    padding: 5px 0px;
+    cursor: col-resize;
+    position: absolute;
+    top: 0px;
+    border: 1px dashed blue;
+}
