@@ -24,7 +24,7 @@
 </nav>
 
 <div class="container-fluid">
-    <div class="layout_container_row row">
+    <div class="bootstrap_content_row row">
         <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
             <ul class="nav nav-sidebar">
                 <li class="active"><a href="#overview">Overview <span class="sr-only">(current)</span></a></li>
@@ -127,17 +127,10 @@
         </div>
 
         <div id="main" class="layout_container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-<!--
-            <div class="panel panel-default">
-                <div class="panel-heading">面板标题
-                <i class="pull-right glyphicon glyphicon-remove"></i></div>
-                <table class="table">
-                    <th>产品</th><th>价格 </th>
-                    <tr><td>产品 A</td><td>200</td></tr>
-                    <tr><td>产品 B</td><td>400</td></tr>
-                </table>
-            </div>
--->
+            <fieldset class="column">
+                <div>left fieldset</div>
+            </fieldset>
+            <!--
             <fieldset class="column left">
                 <div>left fieldset</div>
             </fieldset>
@@ -145,36 +138,11 @@
             <fieldset class="column     right">
                 <div>right fieldset</div>
             </fieldset>
-
+-->
         </div>
 
     </div>
 </div>
-<style>
-    .main {
-        /*margin-left:0px;
-        margin-top:10px;*/
-        position:relative;
-        padding:30px 15px 15px;
-        border: 1px solid #DDDDDD;
-        border-radius: 4px;
-        height: auto;
-        word-wrap: break-word;}
-    .main:after {
-        background-color: #F5F5F5;
-        border: 1px solid #DDDDDD;
-        border-radius: 4px 0 4px 0;
-        color: #9DA0A4;
-        content: "预览区";
-        font-size: 12px;
-        font-weight: bold;
-        left: -1px;
-        padding: 3px 7px;
-        position: absolute;
-        top: -1px;
-    }
-
-</style>
 
 <link rel="stylesheet" href="styles/container.css" />
 

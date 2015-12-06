@@ -1,0 +1,69 @@
+@base_url:"http://assets.fnord.com";//基准地址，后面的background-image可以使用@{}替换用，比如：background-image: url("@{base_url}/abc");
+
+//导航栏下面那部分
+.bootstrap_content_row{
+  height: 100%;
+
+}
+
+.common_func{
+
+  .layout(@c:#000000){
+    position:absolute;
+    border: 1px solid @c;
+  }
+}
+
+//布局容器
+.layout_container
+{
+  height:100%;
+  position: relative;
+  //padding:30px 15px 15px;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  word-wrap: break-word;
+
+  &:after {
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #9DA0A4;
+    content: "预览区";
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 3px 7px;
+    position: absolute;
+    top: -1px;
+  }
+
+  fieldset{
+    &.column{
+      height: 100%;
+      width: 100%;
+      border: 1px solid #0081c2;
+      display: block;
+    }
+
+    &.left{
+      .common_func > .layout(#ff0000);
+    }
+
+    &.right{
+      .common_func > .layout(#ff5fba);
+    }
+  }
+
+}
+
+#handler_vertical{
+  z-index: 200;
+  width: 8px;
+  height: 100%;
+  padding: 5px 0px;
+  cursor: col-resize;
+  position: absolute;
+  top: 0px;
+  border: 1px dashed blue;
+}

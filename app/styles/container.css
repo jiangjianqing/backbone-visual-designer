@@ -1,36 +1,47 @@
-.layout_container
-{
-    height:100%;
-    position: relative;
+.bootstrap_content_row {
+  height: 100%;
 }
-
-.layout_container fieldset.column{
-    height:100%;
-    display: block;
+.layout_container {
+  height: 100%;
+  position: relative;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  word-wrap: break-word;
 }
-
-
-.layout_container fieldset.left{
-    position: absolute;
-    border: 1px solid #ffc520;
+.layout_container:after {
+  background-color: #F5F5F5;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px 0 4px 0;
+  color: #9DA0A4;
+  content: "预览区";
+  font-size: 12px;
+  font-weight: bold;
+  left: -1px;
+  padding: 3px 7px;
+  position: absolute;
+  top: -1px;
 }
-
-.layout_container fieldset.right{
-    position: absolute;
-    border: 1px solid #ff5fba;
+.layout_container fieldset.column {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #0081c2;
+  display: block;
 }
-
-.layout_container_row{
-    height: 100%;
+.layout_container fieldset.left {
+  position: absolute;
+  border: 1px solid #ff0000;
 }
-
-#handler_vertical{
-    z-index: 200;
-    width: 8px;
-    height: 100%;
-    padding: 5px 0px;
-    cursor: col-resize;
-    position: absolute;
-    top: 0px;
-    border: 1px dashed blue;
+.layout_container fieldset.right {
+  position: absolute;
+  border: 1px solid #ff5fba;
+}
+#handler_vertical {
+  z-index: 200;
+  width: 8px;
+  height: 100%;
+  padding: 5px 0px;
+  cursor: col-resize;
+  position: absolute;
+  top: 0px;
+  border: 1px dashed blue;
 }
