@@ -9,7 +9,8 @@
 .common_func{
 
   .layout(@c:#000000){
-    position:absolute;
+    //position:absolute;
+    //float:left;
     border: 1px solid @c;
   }
 }
@@ -17,12 +18,14 @@
 //布局容器
 .layout_container
 {
-  height:100%;
+  height:auto;//20151208这样可以让div随着内容变化而改变高度
   position: relative;
   //padding:30px 15px 15px;
   border: 1px solid #DDDDDD;
   border-radius: 4px;
   word-wrap: break-word;
+
+  margin-bottom: auto;
 
   &:after {
     background-color: #F5F5F5;
@@ -39,31 +42,85 @@
   }
 
   fieldset{
+    .standard-config{
+      margin: 0;
+    }
+
     &.column{
       height: 100%;
       width: 100%;
       border: 1px solid #0081c2;
-      display: block;
+      position:relative;
+      //display: block;
+      //margin: 10px  0px;//测试显示用
     }
 
-    &.left{
+    &.column-left{
       .common_func > .layout(#ff0000);
+      .standard-config;
+      width: auto;
+      height: 100%;
+      position: absolute;
+      top:0;
+      left:0;
+      //display:inline-block;
     }
 
-    &.right{
+    &.column-right{
       .common_func > .layout(#ff5fba);
+      .standard-config;
+      width: auto;
+      height: 100%;
+      position: absolute;
+      top:0;
+      left:0;
+      //display:inline-block;
+    }
+
+    &.column-top{
+      //.common_func > .layout(#ff5fba);
+      .standard-config;
+      width: 100%;
+      height: auto;
+      display:block;
+    }
+
+    &.column-bottom{
+      .standard-config;
+      //.common_func > .layout(#ff5fba);
+      width: 100%;
+      height: 200px;
+      //margin-top: 20px;;
+      margin-bottom: 0px;
+      display:block;
+    }
+
+
+
+    div{
+      &.splite{
+        background-color: #000088;
+        position: relative;
+        z-index: 200;
+        border: 1px dashed blue;
+      }
+
+      &.splite-vertical{
+        width: 8px;
+        height: 100%;
+        cursor: col-resize;
+        padding: 5px 0px;
+        display:inline-block;
+      }
+
+      &.splite-horizontal{
+        height: 8px;
+        width: 100%;
+        cursor:row-resize;
+        padding:0px 5px;
+      }
     }
   }
 
 }
 
-#handler_vertical{
-  z-index: 200;
-  width: 8px;
-  height: 100%;
-  padding: 5px 0px;
-  cursor: col-resize;
-  position: absolute;
-  top: 0px;
-  border: 1px dashed blue;
-}

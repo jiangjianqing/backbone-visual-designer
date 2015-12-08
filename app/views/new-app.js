@@ -6,9 +6,10 @@ define([
     'underscore',
     'backbone',
     'text!templates/new-app.html',
+    'lib/layout-utils/layout-parser',
     'bootstrap',
     'domReady!'
-],function($,_,Backbone,appTemplate){
+],function($,_,Backbone,appTemplate,layoutParser){
     var AppView=Backbone.View.extend({
         el:'body',
         template: _.template(appTemplate),
@@ -49,6 +50,9 @@ define([
                 });
             });
             //this.$("[data-toggle='popover']").popover();
+
+            //这里开始处理布局信息
+            this.processLayout(this.$el.find("div[id=main]"));
             return this;
         },
         onPopoverIn:function(event){
@@ -59,6 +63,10 @@ define([
         },
         onPopoverOut:function(){
             //console.log("PopoverOut");
+        },
+        processLayout:function($layout_container){
+            var $children=$layout_container.children();
+            layoutParser.parse($children);
         }
     });
 
