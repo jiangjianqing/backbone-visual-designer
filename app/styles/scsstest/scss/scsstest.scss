@@ -1,0 +1,100 @@
+$em-base:19em;//正式值，//定义全局变量(在选择器、函数、混合宏...的外面定义的变量为全局变量)
+$em-base: 16em !default;//默认变量值，如果上面没有定义$em-base正式值，则默认值会生效 .价值在进行组件化开发的时候会非常有用
+@function emCalc($pxWidth) { /* 自定义函数*/
+  @return $pxWidth / $em-base * 1em;
+}
+
+$font-stack: Helvetica, sans-serif;//定义变量
+$primary-color: #fff;
+
+body {
+
+  font: 100% $font-stack;
+  color: $primary-color;
+
+  font-size:emCalc(5em);//调用自定义函数
+}
+
+body .h1{
+  $em-base:31px;//定义局部变量
+  $color: red !global;//这里将$color定义为了全局变量
+  background-color: transparent;
+  font-size: $em-base;
+}
+
+#top_nav{
+  line-height: 40px;
+  li{
+    float:left;
+  }
+
+  a{
+    padding: 0 10px;
+    color: #fff;
+
+    &:hover{
+      color:#ddd;
+    }
+  }
+}
+
+@mixin border-radius{ //定义了一个mixin，需要用@mixin开头
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+@mixin box-shadow($shadow...) {//如果一个参数可以有多组值，如box-shadow、transition等，那么参数则需要在变量后加三个点"..."表示，如$variables...
+  -webkit-box-shadow:$shadow;
+  box-shadow:$shadow;
+}
+
+.box2 {//嵌套属性展示 ，，，所谓属性嵌套指的是有些属性拥有同一个开始单词，如border-width，border-color都是以border开头
+  @include border-radius;//使用一个mixin
+
+  @include box-shadow(0 2px 2px rgba(0,0,0,.3),0 3px 3px rgba(0,0,0,.3),0 4px 4px rgba(0,0,0,.3));//参数提供多组值
+
+  border: {
+    style: solid;
+    left: {
+      width: 4px;
+      color: #888;
+    }
+    right: {
+      width: 2px;
+      color: #ccc;
+    }
+  }
+}
+
+.box3{
+  @extend .box2; //box3继承于box2
+
+  style:dashed;//修改了box3不同于box2的地方
+  font-size:120%;
+}
+
+.disabled {
+  color: gray;
+  @extend a;//从#top_nav.a继承
+}
+
+%mar {//占位符 %placeholder ，不论有没有代码调用，其在css中都不会出现
+  margin: 5px;
+}
+%pad{
+  padding: 5px;
+}
+
+.btn {
+  @extend %mar;//使用@extend调用占位符，注意：调用两个占位符会导致出现两个.btn定义，而不是合并为一个！！！！这与使用include @mixin不同
+  @extend %pad;
+}
+
+@mixin firefox-message($selector) {
+  body.firefox #{$selector}:before { //使用 #{ }插值语句 场合1
+    $name:"hubwiz users";
+    content: "Hi, #{$name}!";//使用 #{ }插值语句 场合2
+  }
+}
+
+@include firefox-message(".header");
+

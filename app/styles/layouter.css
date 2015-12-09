@@ -1,0 +1,58 @@
+fieldset .standard-config, fieldset fieldset.column-left, fieldset fieldset.column-right, fieldset fieldset.column-top, fieldset fieldset.column-bottom {
+  margin: 0;
+}
+fieldset.column {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #0081c2;
+  position: relative;
+}
+fieldset.column-left {
+  border: 1px solid #ff0000;
+  width: auto;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+fieldset.column-right {
+  border: 1px solid #ff5fba;
+  width: auto;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+fieldset.column-top {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+fieldset.column-bottom {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 0px;
+  display: block;
+}
+
+fieldset div.splite {
+  background-color: #000088;
+  position: relative;
+  z-index: 200;
+  border: 1px dashed blue;
+}
+fieldset div.splite-vertical {
+  width: 8px;
+  height: 100%;
+  cursor: col-resize;
+  padding: 5px 0px;
+  display: inline-block;
+}
+fieldset div.splite-horizontal {
+  height: 8px;
+  width: 100%;
+  cursor: row-resize;
+  padding: 0px 5px;
+}
+
+/*# sourceMappingURL=layouter.css.map */

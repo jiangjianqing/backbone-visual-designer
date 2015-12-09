@@ -1,0 +1,25 @@
+fieldset{
+  div{
+    &.splite{
+      background-color: #000088;
+      position: relative;
+      z-index: 200;
+      border: 1px dashed blue;
+    }
+
+    &.splite-vertical{
+      width: 8px;
+      height: 100%;
+      cursor: col-resize;
+      padding: 5px 0px;
+      display:inline-block;
+    }
+
+    &.splite-horizontal{
+      height: 8px;
+      width: 100%;
+      cursor:row-resize;
+      padding:0px 5px;
+    }
+  }
+}

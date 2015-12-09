@@ -1,0 +1,47 @@
+@base_url:"http://assets.fnord.com";//基准地址，后面的background-image可以使用@{}替换用，比如：background-image: url("@{base_url}/abc");
+
+//导航栏下面那部分
+.bootstrap_content_row{
+  height: 100%;
+
+}
+
+.common_func{
+
+  .layout(@c:#000000){
+    //position:absolute;
+    //float:left;
+    border: 1px solid @c;
+  }
+}
+
+//布局容器
+.layout_container
+{
+  //.common_func > .layout(#ff5fba); 调用其他类中的mixin
+  height:auto;//20151208这样可以让div随着内容变化而改变高度
+  position: relative;
+  //padding:30px 15px 15px;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+  word-wrap: break-word;
+
+  margin-bottom: auto;
+
+  &:after {
+    background-color: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px 0 4px 0;
+    color: #9DA0A4;
+    content: "预览区";
+    font-size: 12px;
+    font-weight: bold;
+    left: -1px;
+    padding: 3px 7px;
+    position: absolute;
+    top: -1px;
+  }
+
+}
+
+
