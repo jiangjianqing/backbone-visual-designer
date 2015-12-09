@@ -1,6 +1,4 @@
 @mixin show_border($c:#000000){
-  //position:absolute;
-  //float:left;
   border: 1px solid $c;
 }
 
@@ -10,7 +8,7 @@ fieldset{
   }
 
   &.column{
-    height: 100%;
+    height: auto;
     width: 100%;
     border: 1px solid #0081c2;
     position:relative;
@@ -18,42 +16,48 @@ fieldset{
     //margin: 10px  0px;//测试显示用
   }
 
-  &.column-left{
-    @include show_border(#ff0000);
+  @mixin column_horizontal{
     @extend .standard-config;
     width: auto;
     height: 100%;
-    position: absolute;
+    display: inline-block;
+    //position: absolute;
     top:0;
     left:0;
+
+    min-height: 100px;
+  }
+
+  &.column-left{
+    @include show_border(#ff0000);
+    @include column_horizontal;
+
     //display:inline-block;
   }
 
   &.column-right{
     @include show_border(#ff5fba);
-    @extend .standard-config;
-    width: auto;
-    height: 100%;
-    position: absolute;
-    top:0;
-    left:0;
+    @include column_horizontal;
+
     //display:inline-block;
   }
 
-  &.column-top{
+  @mixin column_vertical{
     @extend .standard-config;
     width: 100%;
     height: auto;
     display:block;
   }
 
+  &.column-top{
+    @include column_vertical;
+  }
+
   &.column-bottom{
-    @extend .standard-config;
-    width: 100%;
+    @include column_vertical;
     height: 200px;
     //margin-top: 20px;;
     margin-bottom: 0px;
-    display:block;
   }
 
 }

@@ -2,7 +2,7 @@ fieldset .standard-config, fieldset fieldset.column-left, fieldset fieldset.colu
   margin: 0;
 }
 fieldset.column {
-  height: 100%;
+  height: auto;
   width: 100%;
   border: 1px solid #0081c2;
   position: relative;
@@ -11,17 +11,19 @@ fieldset.column-left {
   border: 1px solid #ff0000;
   width: auto;
   height: 100%;
-  position: absolute;
+  display: inline-block;
   top: 0;
   left: 0;
+  min-height: 100px;
 }
 fieldset.column-right {
   border: 1px solid #ff5fba;
   width: auto;
   height: 100%;
-  position: absolute;
+  display: inline-block;
   top: 0;
   left: 0;
+  min-height: 100px;
 }
 fieldset.column-top {
   width: 100%;
@@ -30,9 +32,10 @@ fieldset.column-top {
 }
 fieldset.column-bottom {
   width: 100%;
+  height: auto;
+  display: block;
   height: 200px;
   margin-bottom: 0px;
-  display: block;
 }
 
 fieldset div.splite {
@@ -43,9 +46,9 @@ fieldset div.splite {
 }
 fieldset div.splite-vertical {
   width: 8px;
-  height: 100%;
+  height: auto;
   cursor: col-resize;
-  padding: 5px 0px;
+  padding: 0px 0px;
   display: inline-block;
 }
 fieldset div.splite-horizontal {

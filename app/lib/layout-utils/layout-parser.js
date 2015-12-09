@@ -2,7 +2,8 @@
  * Created by ztxs on 15-12-8.
  */
 define([
-    'jquery'
+    'jquery',
+    './jq-resizer'
 ],function($){
     "use strict";
     function Parser(){
@@ -39,19 +40,28 @@ define([
                 }).on("mousemove",function(event){
                     if(isMoving){
                         var splite_left=last_left+event.pageX -abs_x;
+                        $leftcol.css({width:splite_left+"px"});
 
+                        /*position:absolite使用的代码
                         $splite.css({'left':splite_left});
                         $leftcol.css({width:splite_left-2});
                         $rightcol.css({
                             left:splite_left+3,
                             width:$parentcol.width()-splite_left
                         });
+                        */
                     }
                     return false;
                 }).on("mouseup  mouseleave",function(){
                     isMoving=false;
                     return false;
                 });
+
+                $leftcol.on("resize",function(event){
+                    console.log("$leftcol.onResize invoke");
+                });
+
+                $leftcol.off("resize");
 
                 //$rightcol.css({width:'49%'});
             }
