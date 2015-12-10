@@ -8,11 +8,12 @@ define([
     "use strict";
     function Parser(){
         this.settings={
-            column_selector:"fieldset[class*='column']",
+            column_selector:"div[class*='column']",
             splite_selector:"div[class*='splite']",
             splite_vertical_selector:"div[class*='splite-vertical']",
             splite_horizontal_selector:"div[class*='splite-horizontal']",
-            has_width_selector:"[style*='width']"
+            has_width_selector:"[style*='width']",
+            has_height_selector:"[style*='height']"
         };
     }
 
@@ -28,7 +29,16 @@ define([
                 if(!$rightcol.is(opts.has_width_selector)){
                     $rightcol.css({width:'50%'});
                 }
+                if(!$parentcol.is(opts.has_height_selector)){
+                    $parentcol.css({height:"200px"});
+                }
+                //line-height:100px
                 console.log("$parentcol.width="+$parentcol.css("width"));
+                console.log("$parentcol.height="+$parentcol.css("height"));
+                console.log("$leftcol.width="+$leftcol.css("width"));
+                console.log("$leftcol.height="+$leftcol.css("height"));
+                console.log("$rightcol.width="+$rightcol.css("width"));
+                console.log("$rightcol.height="+$rightcol.css("height"));
                 console.log("lastest $splite.left="+$splite.css("left"));
 
                 //var splite_left

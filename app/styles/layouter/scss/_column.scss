@@ -2,7 +2,7 @@
   border: 1px solid $c;
 }
 
-fieldset{
+div{
   .standard-config{
     margin: 0;
   }
@@ -21,7 +21,7 @@ fieldset{
     @extend .standard-config;
     width: auto;
     height: 100%;
-    //display: inline-block;
+    display: inline-block;
     @each $member in "","-ms-","-moz-","-webkit-"{//使用遍历生成兼容代码
       display:#{$member}box;
     }

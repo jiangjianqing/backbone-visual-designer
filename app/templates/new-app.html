@@ -127,42 +127,62 @@
         </div>
 
         <div id="main" class="layout_container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <fieldset class="column">
-                <fieldset class="column column-left">
-                    <div style="height: 100%;width: 100%;overflow: auto">
+            <div class="column">
+                <div class="column column-left">
                         <div style="overflow: auto">left fieldset
                         <pre>必须给父容器wrap定义css属性display:box其子容器才可以进行划分(如果定了display:box则该容器则定义为了内联元素，使用margin:0px auto让其居中是无效的，
                             要想使其居中只能通过它的父容器的text-align:center);分别给sectionOne、
                             sectionTwo、sectionThree的box-flex设置了3、2、1，也就是说这三个子容器将父容器wrap的宽度600px分为6份
                             ，sectionOne占居父结构宽度的3/6即300px，sectionOne占居父结构宽度的2/6即200px，
                             sectionThree占居父结构宽度的1/6即100px。</pre>
+                            <pre>必须给父容器wrap定义css属性display:box其子容器才可以进行划分(如果定了display:box则该容器则定义为了内联元素，使用margin:0px auto让其居中是无效的，
+                            要想使其居中只能通过它的父容器的text-align:center);分别给sectionOne、
+                            sectionTwo、sectionThree的box-flex设置了3、2、1，也就是说这三个子容器将父容器wrap的宽度600px分为6份
+                            ，sectionOne占居父结构宽度的3/6即300px，sectionOne占居父结构宽度的2/6即200px，
+                            sectionThree占居父结构宽度的1/6即100px。</pre>
                         </div>
-                    </div>
-                </fieldset>
+                </div>
                 <div  class="splite splite-vertical" ></div>
-                <fieldset class="column column-right">
+                <div class="column column-right">
                     <div>right fieldset</div>
-                </fieldset>
-            </fieldset>
-            <fieldset class="column">
-                <fieldset class="column column-top">
+                </div>
+            </div>
+            <div class="column" >
+                <div class="column column-top">
                     <div>top fieldset</div>
-                </fieldset>
+                </div>
                 <div  class="splite splite-horizontal" ></div>
-                <fieldset class="column column-bottom">
+                <div class="column column-bottom">
                     <div>bottom fieldset</div>
-                </fieldset>
-            </fieldset>
+                    <fieldset>
+                        <legend>这里面是标题</legend>
+                            这里面是FIELDSET标签内的内容。
+                            这里面是FIELDSET标签内的内容。
+                    </fieldset>
+                </div>
+            </div>
 
-            <fieldset class="column">
-                <fieldset class="column column-left">
+            <div class="column" style="height:100px">
+                <div class="column column-left">
                     <div>left fieldset</div>
-                </fieldset>
+                </div>
                 <div  class="splite splite-vertical" ></div>
-                <fieldset class="column column-right">
+                <div class="column column-right">
                     <div>right fieldset</div>
-                </fieldset>
-            </fieldset>
+                    <div style="overflow: auto">left fieldset
+                        <pre>必须给父容器wrap定义css属性display:box其子容器才可以进行划分(如果定了display:box则该容器则定义为了内联元素，使用margin:0px auto让其居中是无效的，
+                            要想使其居中只能通过它的父容器的text-align:center);分别给sectionOne、
+                            sectionTwo、sectionThree的box-flex设置了3、2、1，也就是说这三个子容器将父容器wrap的宽度600px分为6份
+                            ，sectionOne占居父结构宽度的3/6即300px，sectionOne占居父结构宽度的2/6即200px，
+                            sectionThree占居父结构宽度的1/6即100px。</pre>
+                            <pre>必须给父容器wrap定义css属性display:box其子容器才可以进行划分(如果定了display:box则该容器则定义为了内联元素，使用margin:0px auto让其居中是无效的，
+                            要想使其居中只能通过它的父容器的text-align:center);分别给sectionOne、
+                            sectionTwo、sectionThree的box-flex设置了3、2、1，也就是说这三个子容器将父容器wrap的宽度600px分为6份
+                            ，sectionOne占居父结构宽度的3/6即300px，sectionOne占居父结构宽度的2/6即200px，
+                            sectionThree占居父结构宽度的1/6即100px。</pre>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
