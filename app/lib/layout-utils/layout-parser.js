@@ -42,7 +42,7 @@ define([
                 console.log("lastest $splite.left="+$splite.css("left"));
 
                 //var splite_left
-                $splite.css({
+                $splite.css({//splite移动到左上角
                     top:0,
                     left:0
                 });
@@ -94,7 +94,10 @@ define([
             }
 
             function adjust_as_horizontal_splite_column($parentcol,$topcol,$splite,$bottomcol){
-
+                $splite.css({//horizontal splite移动到左上角
+                    left:0,
+                    top:0
+                });
             }
 
             function analyse_column($ele){

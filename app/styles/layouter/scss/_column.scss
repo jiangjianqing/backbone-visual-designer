@@ -56,7 +56,7 @@ div{
 
   &.column-bottom{
     @include column_vertical;
-    height: 200px;
+    height: 200px;//该属性暂时固定
     //margin-top: 20px;;
     margin-bottom: 0px;
   }

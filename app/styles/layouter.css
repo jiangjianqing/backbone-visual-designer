@@ -49,7 +49,7 @@ div.column-bottom {
 
 div div.splite {
   background-color: #000088;
-  position: relative;
+  position: absolute;
   z-index: 200;
   border: 1px dashed blue;
 }
@@ -58,7 +58,6 @@ div div.splite-vertical {
   height: 100%;
   cursor: col-resize;
   padding: 0px 0px;
-  position: absolute;
 }
 div div.splite-horizontal {
   height: 8px;
