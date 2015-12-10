@@ -11,7 +11,10 @@ fieldset.column-left {
   border: 1px solid #ff0000;
   width: auto;
   height: 100%;
-  display: inline-block;
+  display: box;
+  display: -ms-box;
+  display: -moz-box;
+  display: -webkit-box;
   top: 0;
   left: 0;
   min-height: 100px;
@@ -20,7 +23,10 @@ fieldset.column-right {
   border: 1px solid #ff5fba;
   width: auto;
   height: 100%;
-  display: inline-block;
+  display: box;
+  display: -ms-box;
+  display: -moz-box;
+  display: -webkit-box;
   top: 0;
   left: 0;
   min-height: 100px;

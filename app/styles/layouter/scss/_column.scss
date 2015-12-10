@@ -20,7 +20,11 @@ fieldset{
     @extend .standard-config;
     width: auto;
     height: 100%;
-    display: inline-block;
+    //display: inline-block;
+    @each $member in "","-ms-","-moz-","-webkit-"{//使用遍历生成兼容代码
+      display:#{$member}box;
+    }
+
     //position: absolute;
     top:0;
     left:0;
@@ -31,15 +35,11 @@ fieldset{
   &.column-left{
     @include show_border(#ff0000);
     @include column_horizontal;
-
-    //display:inline-block;
   }
 
   &.column-right{
     @include show_border(#ff5fba);
     @include column_horizontal;
-
-    //display:inline-block;
   }
 
   @mixin column_vertical{
