@@ -12,6 +12,7 @@ define([
             splite_selector:"div[class*='splite']",
             splite_vertical_selector:"div[class*='splite-vertical']",
             splite_horizontal_selector:"div[class*='splite-horizontal']",
+            has_width_selector:"[style*='width']"
         };
     }
 
@@ -21,6 +22,20 @@ define([
 
             function adjust_as_vertical_splite_column($parentcol,$leftcol,$splite,$rightcol){
                 //$parentcol.css({display:'inline-block'});
+                if(!$leftcol.is(opts.has_width_selector)){
+                    $leftcol.css({width:'50%'});
+                }
+                if(!$rightcol.is(opts.has_width_selector)){
+                    $rightcol.css({width:'50%'});
+                }
+                console.log("$parentcol.width="+$parentcol.css("width"));
+                console.log("lastest $splite.left="+$splite.css("left"));
+
+                //var splite_left
+                $splite.css({
+                    top:0,
+                    left:0
+                });
                 var isMoving=false;
                 var abs_x=0;
                 var last_left=0;
@@ -31,6 +46,8 @@ define([
                         last_left=parseInt($splite.css("left"));
                         abs_x = event.pageX;
                         console.log("abs_x="+abs_x+",last_left="+last_left);
+
+
                         //console.log("event.pageX="+event.pageX);
                         //console.log("$splite.offset="+$splite.offset().left);
                         //var abs_y = event.pageY - $splite.offset().top;
@@ -40,7 +57,7 @@ define([
                 }).on("mousemove",function(event){
                     if(isMoving){
                         var splite_left=last_left+event.pageX -abs_x;
-                        $leftcol.css({width:splite_left+"px"});
+                        //$leftcol.css({width:splite_left+"px"});
 
                         /*position:absolite使用的代码
                         $splite.css({'left':splite_left});

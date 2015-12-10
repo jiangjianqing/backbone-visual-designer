@@ -6,6 +6,7 @@ fieldset.column {
   width: 100%;
   border: 1px solid #0081c2;
   position: relative;
+  overflow: auto;
 }
 fieldset.column-left {
   border: 1px solid #ff0000;
@@ -52,10 +53,10 @@ fieldset div.splite {
 }
 fieldset div.splite-vertical {
   width: 8px;
-  height: auto;
+  height: 100%;
   cursor: col-resize;
   padding: 0px 0px;
-  display: inline-block;
+  position: absolute;
 }
 fieldset div.splite-horizontal {
   height: 8px;

@@ -9,10 +9,10 @@ fieldset{
 
     &.splite-vertical{
       width: 8px;
-      height: auto;
+      height: 100%;
       cursor: col-resize;
       padding: 0px 0px;
-      display:inline-block;
+      position:absolute;
     }
 
     &.splite-horizontal{
