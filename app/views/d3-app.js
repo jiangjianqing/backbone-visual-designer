@@ -48,10 +48,75 @@ define([
 
             this.svg=d3.select(this.el).select("#test_d3").append("svg").attr("class","mysvg");
             //this.drawSvg();
-            this.testPieLayout(this.svg);
+            //this.testPieLayout(this.svg);
             //this.testForceLayout(this.svg);
+            this.testTreeLayout(this.svg);
 
             return this;
+        },
+        testTreeLayout:function(svg){
+            var root={
+                "name":"中国",
+                "children":
+                    [
+                        {
+                            "name":"浙江" ,
+                            "children":
+                                [
+                                    {"name":"杭州" },
+                                    {"name":"宁波" },
+                                    {"name":"温州" },
+                                    {"name":"绍兴" }
+                                ]
+                        },
+
+                        {
+                            "name":"广西" ,
+                            "children":
+                                [
+                                    {"name":"桂林"},
+                                    {"name":"南宁"},
+                                    {"name":"柳州"},
+                                    {"name":"防城港"}
+                                ]
+                        }
+                    ]
+            };
+
+            var tree=d3.layout.tree().size([500,300]);
+
+            var nodes=tree.nodes(root);
+            var links=tree.links(nodes);
+
+            console.log(nodes);
+            console.log(links);
+
+            //对角线生成器
+            var diagonal = d3.svg.diagonal()
+                .projection(function(d) { return [d.x, d.y]; });//这里使用[d.x,d.y]为上下排列，[d.y,d.x]为左右排列
+
+            var link = svg.selectAll(".link")
+                .data(links)
+                .enter()
+                .append("path")
+                .attr("class", "link")
+                .attr("d", diagonal);   //使用对角线生成器
+
+            var node = svg.selectAll(".node")
+                .data(nodes)
+                .enter()
+                .append("g")
+                .attr("class", "node")
+                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });//这里使用[d.x,d.y]为上下排列，[d.y,d.x]为左右排列
+            node.append("circle")
+                .attr("r", 4.5);
+
+            node.append("text")
+                .attr("dx", function(d) { return d.children ? -8 : 8; })
+                .attr("dy", 3)
+                .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
+                .text(function(d) { return d.name; });
+
         },
         testForceLayout:function(svg){
             var nodes = [ { name: "桂林" }, { name: "广州" },
