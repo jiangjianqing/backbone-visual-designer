@@ -1,0 +1,76 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">VisualLayoutDesigner</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div class="bootstrap_content_row row">
+        <div class="col-sm-3 col-md-2 sidebar" id="sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#overview">Overview <span class="sr-only">(current)</span></a></li>
+                <li><a data-toggle="collapse" href="#collapseOne">ABC</a>
+                    <div id="collapseOne" class=" collapse in">
+                        <ul class="list-group">
+                            <li class="list-group-item text-center">ABC栏</li>
+                            <li class="list-group-item">ABC栏</li>
+                            <li class="list-group-item">
+                                <i class="pull-right icon-chevron-right"></i>
+                                ABC</li>
+                            <li class="list-group-item">
+                                <div class="pull-right popover-info"><span class="badge">新</span>
+                                    <div class="popover fade right">
+                                        <div class="arrow"></div>
+                                        <h3 class="popover-title">功能介绍</h3>
+                                        <div class="popover-content">显示系统当前状态用，请访问<a target="_blank" href="http://twitter.github.io/bootstrap/scaffolding.html#gridSystem">状态栏.</a></div>
+                                    </div>
+                                </div>
+                                ABC
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge">新</span>
+                                ABC
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+
+            </ul>
+
+
+
+        </div>
+
+        <div id="main" class="layout_container col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+            <div id="test_d3">d3 test</div>
+        </div>
+
+
+    </div>
+</div>
+
+<div class="tooltip"></div>
+
+<link rel="stylesheet" href="styles/container.css" />
+<link rel="stylesheet" href="styles/d3_test.css" />

@@ -33,7 +33,8 @@ require.config({
 		text: '../bower_components/requirejs-text/text',
 		domReady:'../bower_components/requirejs-domready/domReady',
 		handlebars:'../bower_components/handlebars/handlebars',
-		highcharts:'../bower_components/highcharts/highcharts'
+		highcharts:'../bower_components/highcharts/highcharts',
+		d3:'../bower_components/d3/d3'
 	}
 });
 
@@ -41,8 +42,9 @@ require([
 	'backbone',
 	'jquery',
 	//'views/group/groups',
-	//'routers/router',
-    'routers/app-router',
+	//'routers/router',//standard demo
+    //'routers/app-router',//visual layout designer
+	'routers/d3-app-router',
 	'domReady'
 ], function (backbone,$,AppRouter/*GroupView,*/) {
 
