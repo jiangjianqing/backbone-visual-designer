@@ -55,35 +55,57 @@ define([
             return this;
         },
         testTreeLayout:function(svg){
+
+            var $tooltip=this.$tooltip;
             var root={
-                "name":"中国",
+                "name":"祖先",
                 "children":
                     [
                         {
-                            "name":"浙江" ,
+                            "name":"父系" ,
                             "children":
                                 [
-                                    {"name":"杭州" },
-                                    {"name":"宁波" },
-                                    {"name":"温州" },
-                                    {"name":"绍兴" }
+                                    {"name":"叔叔一" },
+                                    {"name":"叔叔二" },
+                                    {"name":"婶婶三" },
+                                    {"name":"婶婶四" }
                                 ]
                         },
 
                         {
-                            "name":"广西" ,
+                            "name":"母系" ,
                             "children":
                                 [
-                                    {"name":"桂林"},
-                                    {"name":"南宁"},
-                                    {"name":"柳州"},
-                                    {"name":"防城港"}
+                                    {"name":"舅舅一"},
+                                    {"name":"舅舅二"},
+                                    {"name":"舅舅三"},
+                                    {"name":"舅舅四"}
                                 ]
                         }
                     ]
             };
 
-            var tree=d3.layout.tree().size([500,300]);
+            //给第一个节点添加初始坐标x0和x1
+            var width=500,height=300;
+
+            //给root添加初始坐标x0和x1
+            //root.x0 = width / 2;
+            //root.y0 = 0;
+
+            //nodeSize与size 是互斥的
+            //var tree=d3.layout.tree().nodeSize([100,100]);//根据节点大小计算布局size
+            var tree=d3.layout.tree().size([width,height])//根据布局大小计算nodeSize
+            var offsetCenter={
+                x:width/2,
+                y:20
+            };
+            var offsetX=function(x){
+                return x+offsetCenter.x;
+            };
+            var offsetY=function(y){
+                return y+offsetCenter.y;
+            };
+
 
             var nodes=tree.nodes(root);
             var links=tree.links(nodes);
@@ -95,27 +117,148 @@ define([
             var diagonal = d3.svg.diagonal()
                 .projection(function(d) { return [d.x, d.y]; });//这里使用[d.x,d.y]为上下排列，[d.y,d.x]为左右排列
 
-            var link = svg.selectAll(".link")
-                .data(links)
-                .enter()
-                .append("path")
-                .attr("class", "link")
-                .attr("d", diagonal);   //使用对角线生成器
+            redraw(root);//从root开始刷新
 
-            var node = svg.selectAll(".node")
-                .data(nodes)
-                .enter()
-                .append("g")
-                .attr("class", "node")
-                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });//这里使用[d.x,d.y]为上下排列，[d.y,d.x]为左右排列
-            node.append("circle")
-                .attr("r", 4.5);
+            function togglenode(d){
+                if (d.children){
+                    d["_children"]= d.children;
+                    d.children=null;
+                }else{
+                    d.children=d["_children"];
+                    d["_children"]=null;
+                }
+            }
 
-            node.append("text")
-                .attr("dx", function(d) { return d.children ? -8 : 8; })
-                .attr("dy", 3)
-                .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
-                .text(function(d) { return d.name; });
+
+
+            function redraw(source){
+                //evaluate nodes and links
+                var nodes=tree.nodes(root);
+                var links=tree.links(nodes);
+
+
+
+                function drawnodes(){
+                    var nodeUpdate=svg.selectAll(".node").data(nodes,function(d){ return d.name; });
+
+                    var nodeEnter=nodeUpdate.enter();
+                    var nodeExit=nodeUpdate.exit();
+
+                    var enterNodes=nodeEnter.append("g")
+                        .attr("class","node")
+                        .attr("transform", function(d) { //这里使用[d.x,d.y]为上下排列，[d.y,d.x]为左右排列
+                            return "translate(" + source.x + "," + source.y + ")";
+                        }).on("mouseover",function(d,i){
+                            $tooltip.text("parent:{0},current:{1}".format(d.parent.name, d.name)).css({
+                               "opacity":1
+                            });
+                        }).on("mousemove",function(d,i){
+                            $tooltip.css({
+                                "left":d3.event.pageX+"px",
+                                "top":d3.event.pageY+20+"px"
+                            });
+                        }).on("mouseout",function(d,i){
+                            $tooltip.css({
+                                "opacity":0
+                            });
+                        })
+                        .on("click",function(d,i){
+                            togglenode(d);
+                            redraw(d);
+                        });
+                    enterNodes.append("circle")
+                        .attr("r", 0)
+                        .style("fill",function(d,i){
+                            return d.children?"black":"#fff";
+                        })
+                        .on("click",function(d,i){
+                            //togglenode(d);
+                        });
+
+                    enterNodes.append("text")
+                        .attr("x", function(d) { return d.children || d._children ? -10 : 10;})
+                        .attr("dy", 5)
+                        .style("text-anchor", function(d) { return d.children ? "end" : "start"; })
+                        .text(function(d) { return d.name; })
+                        .style("fill-opacity", 0);
+
+                    enterNodes.transition()
+                        .duration(500)
+                        .attr("transform", function(d) { //这里使用[d.x,d.y]为上下排列，[d.y,d.x]为左右排列
+                            return "translate(" + d.x + "," + d.y + ")";
+                        });
+
+                    //重点updateNode中已经包含了enterNode
+                    var updateNodes = nodeUpdate.transition()
+                        .duration(500)
+                        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+                    //updateNodes已经开启了transition
+                    updateNodes.selectAll("circle")
+                        .attr("r",8)
+                        .style("fill", function(d) { return d.children ? "lightsteelblue" : "#fff"; });
+                    updateNodes.selectAll("text")
+                        .style("fill-opacity", 1);
+
+                    var exitNodes=nodeExit.transition()
+                        .duration(500);
+
+                    exitNodes.selectAll("circle")
+                        .attr("r",0);
+                    exitNodes.selectAll("text")
+                        .style("fill-opacity",0);
+                    exitNodes.attr("transform",function(d,i){
+                            return "translate(" + source.x + "," + source.y + ")";
+                        })
+                        .remove();
+
+
+
+                }
+
+                function drawlinks(){
+                    var linkUpdate=svg.selectAll(".link")
+                        .data(links,function(d){
+                            return d.target.name;
+                        });
+                    var linkEnter=linkUpdate.enter();
+                    var linkExit=linkUpdate.exit();
+
+                    var enterLinks=linkEnter.append("path")
+                        .attr("class","link")
+                        .style("fill-opacity",0)
+                        .attr("d", function(d) {
+                            var o = {x: source.x, y: source.y};
+                            return diagonal({source: o, target: o});
+                        });
+                    enterLinks.transition()
+                        .duration(500)
+                        .style("fill-opacity",1)
+                        .attr("d",diagonal);  //使用对角线生成器
+
+                    linkUpdate.transition()//这里加transition是为了屏蔽diagonal生成的默认path效果
+                        .duration(500)
+                        //.style("fill-opacity",1)
+                        .attr("d",diagonal);
+
+                    linkExit.transition()
+                        .duration(500)
+                        .style("file-opacity",0)
+                        .attr("d",function(d,i){
+                            var o = {x: source.x, y: source.y};
+                            return diagonal({source: o, target: o})
+                        })
+                        .remove();
+                }
+
+                drawlinks();
+                drawnodes();
+
+                //nodes.forEach(function(d){
+                //    d.x0= d.x;
+                //    d.y0.d.y;
+                //})
+            }
+
 
         },
         testForceLayout:function(svg){
